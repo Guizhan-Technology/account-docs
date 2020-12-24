@@ -1,0 +1,3 @@
+- Language
+  - [<span class="flag-icon flag-icon-us"></span> English](/)
+  - [<span class="flag-icon flag-icon-cn"></span> 简体中文](/zh-cn/)
