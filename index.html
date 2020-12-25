@@ -15,20 +15,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="https://gzassets.cn/guizhanss/account/css/documents.css">
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TFT6VMZ');</script>
 </head>
 
 <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFT6VMZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
     <div id="app">Loading...</div>
     <script>
         window.$docsify = {
-            name: 'Guizhan Account',
+            name: 'Guizhan Account', 
+            nameLink: {
+                '/zh-cn/': '#/zh-cn/',
+                '/': '#/',
+            },
             loadNavbar: true,
             loadSidebar: true,
             auto2top: true,
-            relativePath: true,
+            //relativePath: true,
             autoHeader: false,
-            executeScript: true,
-            onlyCover: true,
+            //executeScript: true,
+            subMaxLevel: 3, 
+            topMargin: 30,
             search: {
                 maxAge: 86400000,
                 paths: 'auto',
@@ -44,9 +58,24 @@
             },
             alias: {
                 '/.*/_navbar.md': '/_navbar.md',
-                '/zh-cn/(.*)': 'https://cdn.jsdelivr.net/gh/Guizhan-Technology/account-docs-zh-cn@master/$1',
-                //'/zh-cn/(.*)': 'http://docs-zh.account.guizhanss.com.test/$1',
-            },
+                //'/zh-cn/(.*)': 'https://cdn.jsdelivr.net/gh/Guizhan-Technology/account-docs-zh-cn@master/$1',
+                '/zh-cn/(.*)': 'http://docs-zh.account.guizhanss.com.test/$1',
+            }, plugins: [
+                function (hook) {
+                    var footer = [
+                        '<hr>',
+                        '<footer>',
+                        '<p>Powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</p>',
+                        '<p>&copy; 2020 <a href="https://www.guizhanss.com" target="_blank">Guizhan Technology</a>. All rights reserved.</p>',
+                        '</footer>'
+                    ].join('');
+
+                    hook.afterEach(function (html) {
+                        html = html.replace('rel="noopener"', 'rel="noopener" target="_blank"')
+                        return html + footer;
+                    });
+                }
+            ]
         }
     </script>
 
@@ -60,26 +89,8 @@
     <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-katex/dist/docsify-katex.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-json.min.js"></script>
 
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.getRegistrations().then(function (registrations) {
-                for (let registration of registrations) {
-                    registration.unregister()
-                }
-            });
-        }
-    </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176567479-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-176567479-1');
-    </script>
 </body>
 
 </html>
