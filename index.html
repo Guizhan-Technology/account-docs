@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Documents - Guizhan Account</title>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="description" content="Description">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Guizhan Account documents">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
@@ -29,6 +29,12 @@
     
     <div id="app">Loading...</div>
     <script>
+        if(location.host == 'docs.account.guizhanss.com'){
+            var docs_zh_cn = 'https://cdn.jsdelivr.net/gh/Guizhan-Technology/account-docs-zh-cn@master/$1';
+        }else{
+            var docs_zh_cn = 'http://docs-zh.account.guizhanss.com.test/$1';
+        }
+
         window.$docsify = {
             name: 'Guizhan Account', 
             nameLink: {
@@ -58,14 +64,13 @@
             },
             alias: {
                 '/.*/_navbar.md': '/_navbar.md',
-                '/zh-cn/(.*)': 'https://cdn.jsdelivr.net/gh/Guizhan-Technology/account-docs-zh-cn@master/$1',
-                //'/zh-cn/(.*)': 'http://docs-zh.account.guizhanss.com.test/$1',
+                '/zh-cn/(.*)': docs_zh_cn,
             }, plugins: [
                 function (hook) {
                     var footer = [
                         '<hr>',
                         '<footer>',
-                        '<p>Powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</p>',
+                        '<p>Powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a></p>',
                         '<p>&copy; 2020 <a href="https://www.guizhanss.com" target="_blank">Guizhan Technology</a>. All rights reserved.</p>',
                         '</footer>'
                     ].join('');
